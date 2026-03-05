@@ -143,66 +143,94 @@ export default function Home() {
       {activeTab === 'houses' && (
         <section className="space-y-8">
           <h2 className="text-xl font-serif text-center mb-6"><span className="chinese-char text-[#b8860b]">宅</span><span className="text-[#2d2a26]/70 ml-2">{lang === 'es' ? 'Mis Casas' : 'My Houses'}</span></h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Casa 1 Placeholder */}
-            <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 shadow-sm">
-              <h3 className="text-lg font-medium text-[#b8860b] mb-4 text-center">{lang === 'es' ? 'Casa 1' : 'House 1'}</h3>
-              <div className="aspect-square bg-[#efe8d8] rounded-lg flex items-center justify-center mb-4 border-2 border-dashed border-[#b8860b]/30">
-                <div className="text-center text-[#6b6560]">
-                  <div className="text-4xl mb-2">🏠</div>
-                  <p className="text-sm">{lang === 'es' ? 'Subir imagen de planta' : 'Upload floor plan'}</p>
-                </div>
-              </div>
-              {/* Compass overlay placeholder */}
-              <div className="relative aspect-square bg-[#efe8d8]/50 rounded-lg border border-[#d4c4a8]">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-32 h-32">
-                    {/* Compass rose */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[#c73e3a] font-bold">N</div>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#6b6560]">S</div>
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#6b6560]">W</div>
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6b6560]">E</div>
-                    <div className="absolute top-2 right-2 text-[#6b6560] text-xs">NE</div>
-                    <div className="absolute top-2 left-2 text-[#6b6560] text-xs">NW</div>
-                    <div className="absolute bottom-2 right-2 text-[#6b6560] text-xs">SE</div>
-                    <div className="absolute bottom-2 left-2 text-[#6b6560] text-xs">SW</div>
-                    <div className="absolute inset-4 border-2 border-[#b8860b]/30 rounded-full"></div>
-                    <div className="absolute inset-8 border border-[#b8860b]/20 rounded-full"></div>
-                  </div>
+          
+          {/* Casa Ceibas */}
+          <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 shadow-sm">
+            <h3 className="text-xl font-medium text-[#b8860b] mb-6 text-center">🌳 Casa Ceibas</h3>
+            
+            <div className="relative max-w-4xl mx-auto">
+              {/* Floor plan image */}
+              <img 
+                src="/casa-ceibas.png" 
+                alt="Casa Ceibas - Planta Baja y Alta" 
+                className="w-full rounded-lg border border-[#d4c4a8]"
+              />
+              
+              {/* Compass Rose Overlay - positioned top right */}
+              <div className="absolute top-4 right-4 w-24 h-24 bg-[#fdfaf3]/90 rounded-full border-2 border-[#b8860b]/50 shadow-lg flex items-center justify-center">
+                <div className="relative w-20 h-20">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[#c73e3a] font-bold text-sm">N</div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#6b6560] text-sm">S</div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#6b6560] text-sm">W</div>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6b6560] text-sm">E</div>
+                  <div className="absolute top-1 right-1 text-[#6b6560] text-[8px]">NE</div>
+                  <div className="absolute top-1 left-1 text-[#6b6560] text-[8px]">NW</div>
+                  <div className="absolute bottom-1 right-1 text-[#6b6560] text-[8px]">SE</div>
+                  <div className="absolute bottom-1 left-1 text-[#6b6560] text-[8px]">SW</div>
+                  {/* Compass lines */}
+                  <div className="absolute inset-3 border border-[#b8860b]/40 rounded-full"></div>
+                  <div className="absolute top-1/2 left-1/2 w-0.5 h-8 bg-[#c73e3a]/60 -translate-x-1/2 -translate-y-full"></div>
+                  <div className="absolute top-1/2 left-1/2 w-0.5 h-8 bg-[#6b6560]/40 -translate-x-1/2"></div>
+                  <div className="absolute top-1/2 left-1/2 h-0.5 w-8 bg-[#6b6560]/40 -translate-y-1/2 -translate-x-full"></div>
+                  <div className="absolute top-1/2 left-1/2 h-0.5 w-8 bg-[#6b6560]/40 -translate-y-1/2"></div>
                 </div>
               </div>
             </div>
 
-            {/* Casa 2 Placeholder */}
-            <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 shadow-sm">
-              <h3 className="text-lg font-medium text-[#b8860b] mb-4 text-center">{lang === 'es' ? 'Casa 2' : 'House 2'}</h3>
-              <div className="aspect-square bg-[#efe8d8] rounded-lg flex items-center justify-center mb-4 border-2 border-dashed border-[#b8860b]/30">
-                <div className="text-center text-[#6b6560]">
-                  <div className="text-4xl mb-2">🏠</div>
-                  <p className="text-sm">{lang === 'es' ? 'Subir imagen de planta' : 'Upload floor plan'}</p>
-                </div>
+            {/* Sector Analysis Grid */}
+            <div className="mt-6 grid grid-cols-3 gap-2 max-w-md mx-auto">
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">NW</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Closet/Escalera' : 'Closet/Stairs'}</div>
               </div>
-              {/* Compass overlay placeholder */}
-              <div className="relative aspect-square bg-[#efe8d8]/50 rounded-lg border border-[#d4c4a8]">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-32 h-32">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[#c73e3a] font-bold">N</div>
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#6b6560]">S</div>
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#6b6560]">W</div>
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6b6560]">E</div>
-                    <div className="absolute top-2 right-2 text-[#6b6560] text-xs">NE</div>
-                    <div className="absolute top-2 left-2 text-[#6b6560] text-xs">NW</div>
-                    <div className="absolute bottom-2 right-2 text-[#6b6560] text-xs">SE</div>
-                    <div className="absolute bottom-2 left-2 text-[#6b6560] text-xs">SW</div>
-                    <div className="absolute inset-4 border-2 border-[#b8860b]/30 rounded-full"></div>
-                    <div className="absolute inset-8 border border-[#b8860b]/20 rounded-full"></div>
-                  </div>
-                </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#c73e3a]">N</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Oficina' : 'Office'}</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">NE</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Oficina Alta' : 'Upper Office'}</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">W</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Baños' : 'Bathrooms'}</div>
+              </div>
+              <div className="bg-[#b8860b]/20 rounded p-2 text-center text-xs border border-[#b8860b]/40">
+                <div className="font-bold text-[#b8860b]">Centro</div>
+                <div className="text-[#6b6560]">{lang === 'es' ? 'Escalera' : 'Stairs'}</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">E</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Recámara' : 'Bedroom'}</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">SW</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Cocina' : 'Kitchen'}</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">S</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Patio/Terraza' : 'Patio/Terrace'}</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">SE</div>
+                <div className="text-[#b8860b]">{lang === 'es' ? 'Terraza' : 'Terrace'}</div>
               </div>
             </div>
           </div>
+
+          {/* Casa 2 Placeholder */}
+          <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 shadow-sm">
+            <h3 className="text-lg font-medium text-[#b8860b] mb-4 text-center">{lang === 'es' ? 'Casa 2' : 'House 2'}</h3>
+            <div className="aspect-video bg-[#efe8d8] rounded-lg flex items-center justify-center border-2 border-dashed border-[#b8860b]/30">
+              <div className="text-center text-[#6b6560]">
+                <div className="text-4xl mb-2">🏠</div>
+                <p className="text-sm">{lang === 'es' ? 'Subir imagen de planta' : 'Upload floor plan'}</p>
+              </div>
+            </div>
+          </div>
+
           <div className="bg-[#efe8d8] rounded-xl p-4 text-center text-sm text-[#6b6560]">
-            <p>{lang === 'es' ? 'Sube las imágenes de tus plantas de casa para analizar la orientación según los puntos cardinales.' : 'Upload your floor plan images to analyze orientation according to cardinal points.'}</p>
+            <p>{lang === 'es' ? 'La rosa de los vientos muestra la orientación. Ajusta mentalmente la imagen para que coincida con los puntos cardinales de tu casa.' : 'The compass rose shows orientation. Mentally adjust the image to match your house cardinal points.'}</p>
           </div>
         </section>
       )}
