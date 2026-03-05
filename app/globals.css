@@ -1,8 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-water-dark: #1a365d;
+  --color-water-light: #3182ce;
+  --color-wood-dark: #22543d;
+  --color-wood-light: #48bb78;
+  --color-fire-dark: #9b2c2c;
+  --color-fire-light: #f56565;
+  --color-earth-dark: #744210;
+  --color-earth-light: #d69e2e;
+  --color-metal-dark: #4a5568;
+  --color-metal-light: #a0aec0;
+  --color-ink: #0f0f0f;
+  --color-rice: #f5f0e8;
+  --color-gold: #c9a227;
+  --color-jade: #00a86b;
+  --color-cinnabar: #e34234;
+  --font-family-serif: 'Noto Serif SC', serif;
+  --font-family-sans: 'Inter', sans-serif;
+}
 
 :root {
   --background: #0f0f0f;
