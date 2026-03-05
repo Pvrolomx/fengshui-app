@@ -13,8 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-ink text-rice antialiased">
-        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-ink to-ink -z-10" />
+      <body className="min-h-screen bg-[#fdfaf3] text-[#2d2a26] antialiased">
         {children}
       </body>
     </html>
