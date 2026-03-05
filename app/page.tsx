@@ -6,7 +6,7 @@ import { getAnnualFlyingStars, getMonthlyFlyingStars, getStarInfo, SECTORS, STAR
 const TEXTS = {
   en: {
     title: 'Feng Shui', subtitle: 'Flying Stars • Kua Number • Five Elements',
-    tabs: { stars: 'Flying Stars', kua: 'Kua Number', elements: 'Elements', colors: 'Color Palette' },
+    tabs: { stars: 'Flying Stars', kua: 'Kua Number', elements: 'Elements', colors: 'Color Palette', houses: 'Houses' },
     stars: { annual: 'Annual Stars', monthly: 'Monthly Stars', year: 'Year', month: 'Month', selectSector: 'Click any sector for details' },
     kua: { calculate: 'Calculate Your Kua', birthYear: 'Birth Year', gender: 'Gender', male: 'Male', female: 'Female', group: 'Group', favorable: 'Favorable Directions', unfavorable: 'Unfavorable Directions', yourElement: 'Your Element' },
     elements: { title: 'The Five Elements', productive: 'Productive Cycle', destructive: 'Destructive Relationships', productiveRel: 'Productive Relationships', colors: 'Colors', shapes: 'Shapes', materials: 'Materials', produces: 'Produces', destroys: 'Destroys' },
@@ -18,7 +18,7 @@ const TEXTS = {
   },
   es: {
     title: 'Feng Shui', subtitle: 'Estrellas Voladoras • Número Kua • Cinco Elementos',
-    tabs: { stars: 'Estrellas Voladoras', kua: 'Número Kua', elements: 'Elementos', colors: 'Paleta de Colores' },
+    tabs: { stars: 'Estrellas Voladoras', kua: 'Número Kua', elements: 'Elementos', colors: 'Paleta de Colores', houses: 'Casas' },
     stars: { annual: 'Estrellas Anuales', monthly: 'Estrellas Mensuales', year: 'Año', month: 'Mes', selectSector: 'Haz clic en cualquier sector para ver detalles' },
     kua: { calculate: 'Calcula tu Kua', birthYear: 'Año de Nacimiento', gender: 'Género', male: 'Masculino', female: 'Femenino', group: 'Grupo', favorable: 'Direcciones Favorables', unfavorable: 'Direcciones Desfavorables', yourElement: 'Tu Elemento' },
     elements: { title: 'Los Cinco Elementos', productive: 'Ciclo Productivo', destructive: 'Relaciones Destructivas', productiveRel: 'Relaciones Productivas', colors: 'Colores', shapes: 'Formas', materials: 'Materiales', produces: 'Produce', destroys: 'Destruye' },
@@ -51,7 +51,7 @@ type Lang = 'en' | 'es';
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>('es');
-  const [activeTab, setActiveTab] = useState<'stars' | 'kua' | 'elements' | 'colors'>('stars');
+  const [activeTab, setActiveTab] = useState<'stars' | 'kua' | 'elements' | 'colors' | 'houses'>('stars');
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [selectedSector, setSelectedSector] = useState<number | null>(null);
@@ -77,7 +77,7 @@ export default function Home() {
       </header>
 
       <nav className="flex flex-wrap justify-center gap-2 mb-8">
-        {[{ id: 'stars', label: `飛星 ${t.tabs.stars}`, icon: '✧' }, { id: 'kua', label: `卦 ${t.tabs.kua}`, icon: '☯' }, { id: 'elements', label: `五行 ${t.tabs.elements}`, icon: '⚊' }, { id: 'colors', label: `色 ${t.tabs.colors}`, icon: '🎨' }].map((tab) => (
+        {[{ id: 'stars', label: `飛星 ${t.tabs.stars}`, icon: '✧' }, { id: 'kua', label: `卦 ${t.tabs.kua}`, icon: '☯' }, { id: 'elements', label: `五行 ${t.tabs.elements}`, icon: '⚊' }, { id: 'colors', label: `色 ${t.tabs.colors}`, icon: '🎨' }, { id: 'houses', label: `宅 ${t.tabs.houses}`, icon: '🏠' }].map((tab) => (
           <button key={tab.id} onClick={() => setActiveTab(tab.id as typeof activeTab)} className={`px-4 py-2 rounded-lg transition-all duration-300 text-sm md:text-base ${activeTab === tab.id ? 'bg-[#b8860b]/20 text-[#b8860b] border border-[#b8860b]/50 shadow-sm' : 'bg-[#f7f3e9] text-[#6b6560] border border-[#efe8d8] hover:border-[#b8860b]/30'}`}><span className="mr-2">{tab.icon}</span>{tab.label}</button>
         ))}
       </nav>
@@ -137,6 +137,73 @@ export default function Home() {
         <section className="space-y-8">
           <h2 className="text-xl font-serif text-center mb-6"><span className="chinese-char text-[#b8860b]">色彩</span><span className="text-[#2d2a26]/70 ml-2">{t.colors.title}</span></h2>
           <ColorPaletteGuide lang={lang} t={t} />
+        </section>
+      )}
+
+      {activeTab === 'houses' && (
+        <section className="space-y-8">
+          <h2 className="text-xl font-serif text-center mb-6"><span className="chinese-char text-[#b8860b]">宅</span><span className="text-[#2d2a26]/70 ml-2">{lang === 'es' ? 'Mis Casas' : 'My Houses'}</span></h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Casa 1 Placeholder */}
+            <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 shadow-sm">
+              <h3 className="text-lg font-medium text-[#b8860b] mb-4 text-center">{lang === 'es' ? 'Casa 1' : 'House 1'}</h3>
+              <div className="aspect-square bg-[#efe8d8] rounded-lg flex items-center justify-center mb-4 border-2 border-dashed border-[#b8860b]/30">
+                <div className="text-center text-[#6b6560]">
+                  <div className="text-4xl mb-2">🏠</div>
+                  <p className="text-sm">{lang === 'es' ? 'Subir imagen de planta' : 'Upload floor plan'}</p>
+                </div>
+              </div>
+              {/* Compass overlay placeholder */}
+              <div className="relative aspect-square bg-[#efe8d8]/50 rounded-lg border border-[#d4c4a8]">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-32 h-32">
+                    {/* Compass rose */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[#c73e3a] font-bold">N</div>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#6b6560]">S</div>
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#6b6560]">W</div>
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6b6560]">E</div>
+                    <div className="absolute top-2 right-2 text-[#6b6560] text-xs">NE</div>
+                    <div className="absolute top-2 left-2 text-[#6b6560] text-xs">NW</div>
+                    <div className="absolute bottom-2 right-2 text-[#6b6560] text-xs">SE</div>
+                    <div className="absolute bottom-2 left-2 text-[#6b6560] text-xs">SW</div>
+                    <div className="absolute inset-4 border-2 border-[#b8860b]/30 rounded-full"></div>
+                    <div className="absolute inset-8 border border-[#b8860b]/20 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Casa 2 Placeholder */}
+            <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 shadow-sm">
+              <h3 className="text-lg font-medium text-[#b8860b] mb-4 text-center">{lang === 'es' ? 'Casa 2' : 'House 2'}</h3>
+              <div className="aspect-square bg-[#efe8d8] rounded-lg flex items-center justify-center mb-4 border-2 border-dashed border-[#b8860b]/30">
+                <div className="text-center text-[#6b6560]">
+                  <div className="text-4xl mb-2">🏠</div>
+                  <p className="text-sm">{lang === 'es' ? 'Subir imagen de planta' : 'Upload floor plan'}</p>
+                </div>
+              </div>
+              {/* Compass overlay placeholder */}
+              <div className="relative aspect-square bg-[#efe8d8]/50 rounded-lg border border-[#d4c4a8]">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-32 h-32">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[#c73e3a] font-bold">N</div>
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#6b6560]">S</div>
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#6b6560]">W</div>
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6b6560]">E</div>
+                    <div className="absolute top-2 right-2 text-[#6b6560] text-xs">NE</div>
+                    <div className="absolute top-2 left-2 text-[#6b6560] text-xs">NW</div>
+                    <div className="absolute bottom-2 right-2 text-[#6b6560] text-xs">SE</div>
+                    <div className="absolute bottom-2 left-2 text-[#6b6560] text-xs">SW</div>
+                    <div className="absolute inset-4 border-2 border-[#b8860b]/30 rounded-full"></div>
+                    <div className="absolute inset-8 border border-[#b8860b]/20 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-[#efe8d8] rounded-xl p-4 text-center text-sm text-[#6b6560]">
+            <p>{lang === 'es' ? 'Sube las imágenes de tus plantas de casa para analizar la orientación según los puntos cardinales.' : 'Upload your floor plan images to analyze orientation according to cardinal points.'}</p>
+          </div>
         </section>
       )}
 
