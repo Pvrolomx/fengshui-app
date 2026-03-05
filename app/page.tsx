@@ -218,14 +218,81 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Casa 2 Placeholder */}
+          {/* Casa Brasil */}
           <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 shadow-sm">
-            <h3 className="text-lg font-medium text-[#b8860b] mb-4 text-center">{lang === 'es' ? 'Casa 2' : 'House 2'}</h3>
-            <div className="aspect-video bg-[#efe8d8] rounded-lg flex items-center justify-center border-2 border-dashed border-[#b8860b]/30">
-              <div className="text-center text-[#6b6560]">
-                <div className="text-4xl mb-2">🏠</div>
-                <p className="text-sm">{lang === 'es' ? 'Subir imagen de planta' : 'Upload floor plan'}</p>
+            <h3 className="text-xl font-medium text-[#b8860b] mb-6 text-center">🇧🇷 Casa Brasil</h3>
+            
+            <div className="relative max-w-3xl mx-auto">
+              {/* Floor plan image */}
+              <img 
+                src="/casa-brasil.png" 
+                alt="Casa Brasil - Floor Plan" 
+                className="w-full rounded-lg border border-[#d4c4a8]"
+              />
+              
+              {/* Compass Rose Overlay - positioned top right */}
+              <div className="absolute top-4 right-4 w-24 h-24 bg-[#fdfaf3]/90 rounded-full border-2 border-[#b8860b]/50 shadow-lg flex items-center justify-center">
+                <div className="relative w-20 h-20">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[#c73e3a] font-bold text-sm">N</div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[#6b6560] text-sm">S</div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#6b6560] text-sm">W</div>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6b6560] text-sm">E</div>
+                  <div className="absolute top-1 right-1 text-[#6b6560] text-[8px]">NE</div>
+                  <div className="absolute top-1 left-1 text-[#6b6560] text-[8px]">NW</div>
+                  <div className="absolute bottom-1 right-1 text-[#6b6560] text-[8px]">SE</div>
+                  <div className="absolute bottom-1 left-1 text-[#6b6560] text-[8px]">SW</div>
+                  <div className="absolute inset-3 border border-[#b8860b]/40 rounded-full"></div>
+                  <div className="absolute top-1/2 left-1/2 w-0.5 h-8 bg-[#c73e3a]/60 -translate-x-1/2 -translate-y-full"></div>
+                  <div className="absolute top-1/2 left-1/2 w-0.5 h-8 bg-[#6b6560]/40 -translate-x-1/2"></div>
+                  <div className="absolute top-1/2 left-1/2 h-0.5 w-8 bg-[#6b6560]/40 -translate-y-1/2 -translate-x-full"></div>
+                  <div className="absolute top-1/2 left-1/2 h-0.5 w-8 bg-[#6b6560]/40 -translate-y-1/2"></div>
+                </div>
               </div>
+            </div>
+
+            {/* Sector Analysis Grid */}
+            <div className="mt-6 grid grid-cols-3 gap-2 max-w-md mx-auto">
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">NW</div>
+                <div className="text-[#b8860b]">Rooftop</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#c73e3a]">N</div>
+                <div className="text-[#b8860b]">Sun Deck</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">NE</div>
+                <div className="text-[#b8860b]">Bathroom</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">W</div>
+                <div className="text-[#b8860b]">Terrace</div>
+              </div>
+              <div className="bg-[#b8860b]/20 rounded p-2 text-center text-xs border border-[#b8860b]/40">
+                <div className="font-bold text-[#b8860b]">Centro</div>
+                <div className="text-[#6b6560]">Living/Dining</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">E</div>
+                <div className="text-[#b8860b]">Closet</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">SW</div>
+                <div className="text-[#b8860b]">Terrace</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">S</div>
+                <div className="text-[#b8860b]">Bedroom</div>
+              </div>
+              <div className="bg-[#efe8d8] rounded p-2 text-center text-xs">
+                <div className="font-bold text-[#6b6560]">SE</div>
+                <div className="text-[#b8860b]">Kitchen</div>
+              </div>
+            </div>
+            
+            {/* Brasil St indicator */}
+            <div className="mt-4 text-center text-xs text-[#6b6560]">
+              <span className="bg-[#efe8d8] px-3 py-1 rounded">📍 Brasil St → W</span>
             </div>
           </div>
 
