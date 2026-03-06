@@ -503,12 +503,14 @@ export function getChineseZodiac(year: number): {
     { animal: 'Pig', chinese: '豬' },
   ];
   
+  // Heavenly Stems cycle - based on last digit of year:
+  // 0,1 = Metal | 2,3 = Water | 4,5 = Wood | 6,7 = Fire | 8,9 = Earth
   const elements: { element: Element; chinese: string }[] = [
-    { element: 'wood', chinese: '木' },
-    { element: 'fire', chinese: '火' },
-    { element: 'earth', chinese: '土' },
-    { element: 'metal', chinese: '金' },
-    { element: 'water', chinese: '水' },
+    { element: 'metal', chinese: '金' },  // 0,1
+    { element: 'water', chinese: '水' },  // 2,3
+    { element: 'wood', chinese: '木' },   // 4,5
+    { element: 'fire', chinese: '火' },   // 6,7
+    { element: 'earth', chinese: '土' },  // 8,9
   ];
   
   // 1900 was Year of the Metal Rat
@@ -516,7 +518,9 @@ export function getChineseZodiac(year: number): {
   const yearDiff = year - baseYear;
   
   const animalIndex = ((yearDiff % 12) + 12) % 12;
-  const elementIndex = Math.floor(((yearDiff % 10) + 10) % 10 / 2);
+  // Element based on last digit of year
+  const lastDigit = ((year % 10) + 10) % 10;
+  const elementIndex = Math.floor(lastDigit / 2);
   
   return {
     animal: animals[animalIndex].animal,
