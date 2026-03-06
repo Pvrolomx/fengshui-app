@@ -372,16 +372,50 @@ function StarLegend({ lang, t }: { lang: Lang; t: typeof TEXTS['en'] }) {
 
 function KuaResults({ personalFengShui, lang, t }: { personalFengShui: ReturnType<typeof getPersonalFengShui>; lang: Lang; t: typeof TEXTS['en'] }) {
   const { kua, zodiac } = personalFengShui;
-  const element = ELEMENTS[kua.element];
+  const kuaElement = ELEMENTS[kua.element];
+  const zodiacElement = ELEMENTS[zodiac.element];
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
-      <div className="bg-[#f7f3e9] border border-[#b8860b]/30 rounded-xl p-6 text-center shadow-sm"><div className="text-6xl font-bold text-[#b8860b] mb-2">{kua.number}</div><div className="chinese-char text-3xl text-[#2d2a26]/80 mb-2">{kua.chineseTrigram}</div><div className="text-[#6b6560]">{kua.trigram} Trigram</div><div className={`inline-block mt-3 px-4 py-1 rounded-full text-sm ${kua.group === 'East' ? 'bg-[#2e8b57]/20 text-[#2e8b57]' : 'bg-[#6b7280]/20 text-[#6b7280]'}`}>{kua.group} {t.kua.group}</div></div>
-      <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 text-center"><div className="chinese-char text-4xl text-[#b8860b] mb-2">{zodiac.chineseAnimal}</div><div className="text-xl text-[#2d2a26]/80">{zodiac.animal}</div><div className="mt-2 flex items-center justify-center gap-2"><span className={`inline-block w-4 h-4 rounded element-${zodiac.element}`}></span><span className="text-[#6b6560]">{zodiac.chineseElement} {zodiac.element}</span></div></div>
+      {/* Two systems side by side */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {/* Chinese Zodiac - Animal + Element del AÑO */}
+        <div className="bg-[#f7f3e9] border border-[#efe8d8] rounded-xl p-6 text-center">
+          <h4 className="text-xs uppercase tracking-wider text-[#6b6560] mb-3">{lang === 'es' ? 'Zodiaco Chino' : 'Chinese Zodiac'}</h4>
+          <div className="chinese-char text-5xl text-[#b8860b] mb-2">{zodiac.chineseAnimal}</div>
+          <div className="text-xl text-[#2d2a26]/80 mb-3">{zodiac.animal}</div>
+          <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg element-${zodiac.element}`}>
+            <span className="text-white font-medium">{zodiac.chineseElement}</span>
+            <span className="text-white/80 capitalize">{zodiac.element}</span>
+          </div>
+          <p className="text-xs text-[#6b6560] mt-3">{lang === 'es' ? 'Elemento del año de nacimiento' : 'Birth year element'}</p>
+        </div>
+
+        {/* Kua Number - Trigrama + Element del KUA */}
+        <div className="bg-[#f7f3e9] border border-[#b8860b]/30 rounded-xl p-6 text-center shadow-sm">
+          <h4 className="text-xs uppercase tracking-wider text-[#6b6560] mb-3">{lang === 'es' ? 'Número Kua' : 'Kua Number'}</h4>
+          <div className="text-5xl font-bold text-[#b8860b] mb-1">{kua.number}</div>
+          <div className="chinese-char text-2xl text-[#2d2a26]/80 mb-1">{kua.chineseTrigram}</div>
+          <div className="text-sm text-[#6b6560] mb-3">{kua.trigram} Trigram</div>
+          <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg element-${kua.element}`}>
+            <span className="text-white font-medium">{kuaElement.chinese}</span>
+            <span className="text-white/80 capitalize">{kua.element}</span>
+          </div>
+          <div className={`inline-block mt-3 ml-2 px-3 py-1 rounded-full text-xs ${kua.group === 'East' ? 'bg-[#2e8b57]/20 text-[#2e8b57]' : 'bg-[#6b7280]/20 text-[#6b7280]'}`}>{kua.group} {t.kua.group}</div>
+        </div>
+      </div>
+
+      {/* Nota explicativa */}
+      <div className="bg-[#efe8d8] rounded-lg p-3 text-center text-xs text-[#6b6560]">
+        {lang === 'es' 
+          ? '⚡ El Zodiaco determina tu animal y elemento del año. El Kua determina tus direcciones favorables basadas en el trigrama.' 
+          : '⚡ The Zodiac determines your animal and year element. The Kua determines your favorable directions based on the trigram.'}
+      </div>
+
+      {/* Directions */}
       <div className="grid md:grid-cols-2 gap-4">
         <div className="bg-[#2e8b57]/10 border border-[#2e8b57]/30 rounded-xl p-4"><h4 className="text-[#2e8b57] font-medium mb-3 text-center">✓ {t.kua.favorable}</h4><div className="space-y-2">{kua.favorableDirections.map((dir, i) => <div key={i} className="flex items-center gap-3 text-sm"><span className="text-lg font-bold text-[#2e8b57] w-8">{dir.direction}</span><span className="text-[#6b6560]">{dir.purpose}</span></div>)}</div></div>
         <div className="bg-[#c73e3a]/10 border border-[#c73e3a]/30 rounded-xl p-4"><h4 className="text-[#c73e3a] font-medium mb-3 text-center">✗ {t.kua.unfavorable}</h4><div className="space-y-2">{kua.unfavorableDirections.map((dir, i) => <div key={i} className="flex items-center gap-3 text-sm"><span className="text-lg font-bold text-[#c73e3a] w-8">{dir.direction}</span><span className="text-[#6b6560]">{dir.meaning}</span></div>)}</div></div>
       </div>
-      <div className={`rounded-xl p-4 element-${kua.element}`}><h4 className="font-medium mb-2 text-white">{t.kua.yourElement}: {element.chinese} {kua.element.toUpperCase()}</h4><div className="grid grid-cols-2 gap-4 text-sm text-white/80"><div><span className="text-white/50">{t.elements.colors}:</span> {element.colors.join(', ')}</div><div><span className="text-white/50">{t.elements.materials}:</span> {element.materials.slice(0, 2).join(', ')}</div></div></div>
     </div>
   );
 }
